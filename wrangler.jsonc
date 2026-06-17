@@ -1,0 +1,23 @@
+{
+  // ───────────────────────────────────────────────────────────────────────────
+  //  Nova Proxy — Cloudflare Worker config (Deploy-to-Cloudflare ready)
+  //  Cloudflare reads this, auto-creates the D1 database, binds it, and deploys
+  //  the Worker — no terminal. The Worker creates its own D1 tables on first run.
+  //  After deploy, open the Worker URL → the /install wizard sets the admin password.
+  // ───────────────────────────────────────────────────────────────────────────
+  "name": "radin-nova",
+  "main": "worker.js",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "nova-proxy-db",
+      "database_id": "d71b7bcf-14b9-4652-a9fa-8aab6def0291"
+    }
+  ],
+  "vars": {
+    "ENABLE_CRON": "false",
+    "PAGES_URL": "https://raw.githubusercontent.com/IRNova/Nova-Proxy/main/public"
+  }
+}
